@@ -1,11 +1,11 @@
 /**
- * const user = new Observable(elem.innerHTML);
+ * const user = new Observer(elem.innerHTML);
  * user.onUpdate(() => {
  *     elem.innerHTML = user.value
  * })
  */
-class Observable {
-    #listeners = [];
+class Observer {
+    #observers = [];
     #value = null;
     constructor(initialValue) {
         this.#value = initialValue;
@@ -17,14 +17,14 @@ class Observable {
 
     set value(value) {
         this.#value = value;
-        this.#listeners.forEach(callback => callback());
+        this.#observers.forEach(callback => callback());
     }
 
     onUpdate(callback) {
-        this.#listeners.push(callback);
+        this.#observers.push(callback);
         return () => {
-            const index = this.#listeners.indexOf(callback);
-            this.#listeners = this.#listeners.splice(index, 1);
+            const index = this.#observers.indexOf(callback);
+            this.#observers = this.#observers.splice(index, 1);
         }
     }
 }
