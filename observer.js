@@ -1,30 +1,34 @@
-/**
- * const user = new Observer(elem.innerHTML);
- * user.onUpdate(() => {
- *     elem.innerHTML = user.value
- * })
- */
+/*
+curl https://raw.githubusercontent.com/voischev/tool/main/observer.js > observer.js
+
+const user = new Observer(elem.innerHTML);
+user.subscribe(() => {
+    elem.innerHTML = user.value
+})
+user.value = 'Ivan';
+*/
 class Observer {
-    #observers = [];
+    #subscribers = [];
     #value = null;
     constructor(initialValue) {
         this.#value = initialValue;
     }
 
     get value() {
-      return this.#value;
+        return this.#value;
     }
 
     set value(value) {
         this.#value = value;
-        this.#observers.forEach(callback => callback());
+        this.#subscribers.forEach(callback => callback());
     }
 
-    onUpdate(callback) {
-        this.#observers.push(callback);
+    subscribe(callback) {
+        if (this.#subscribers.includes(callback) === false) {
+            this.#subscribers.push(callback);
+        }
         return () => {
-            const index = this.#observers.indexOf(callback);
-            this.#observers = this.#observers.splice(index, 1);
+            this.#subscribers = this.#subscribers.filter((subscriber) => subscriber !== callback);
         }
     }
 }
