@@ -1,0 +1,11 @@
+.Scrollable {
+    display: flex;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+}
+
+.ScrollableItem {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
