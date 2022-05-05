@@ -1,13 +1,13 @@
 /*
-curl https://raw.githubusercontent.com/voischev/tool/main/observer.js > observer.js
+curl https://raw.githubusercontent.com/voischev/tool/main/Observable.js > Observable.js
 
-const user = new Observer(elem.innerHTML);
+const user = new Observable(elem.innerHTML);
 user.subscribe(() => {
     elem.innerHTML = user.value
 })
 user.value = 'Ivan';
 */
-class Observer {
+class Observable {
     #subscribers = [];
     #value = null;
     constructor(initialValue) {
