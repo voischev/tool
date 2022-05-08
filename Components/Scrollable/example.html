@@ -4,13 +4,22 @@
     <meta charset="utf-8">
     <title>Examle</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
-    <link rel="stylesheet" href="Scrollable.css">
 </head>
 <body>
-<div class="Scrollable">
-    <div class="ScrollableItem">1</div>
-    <div class="ScrollableItem">2</div>
-    <div class="ScrollableItem">3</div>
+<div id="s1">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
 </div>
+<div id="s2">
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+</div>
+<script src="Scrollable.js"></script>
+<script>
+    const s1 = new Scrollable(document.getElementById("s1"));
+    const s2 = new Scrollable(document.getElementById("s2"));
+</script>
 </body>
 </html>
