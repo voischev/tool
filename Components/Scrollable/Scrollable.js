@@ -13,7 +13,7 @@ class Scrollable {
             style.id = 'scrollable';
             style.innerHTML = [
                 '.Scrollable{display:flex;overflow-x:scroll;flex-wrap:nowrap;scroll-snap-type:x mandatory;}',
-                '.ScrollableItem{flex:0 0 100%;scroll-snap-align: start;}'
+                '.ScrollableItem{flex:0 0 100%;scroll-snap-align:start;}'
             ].join('');
             document.head.appendChild(style);
         }
@@ -44,6 +44,6 @@ class Scrollable {
         return this.#index;
     }
     set index(n) {
-        this.#element.scrollLeft = Math.abs(n * this.#element.offsetWidth);
+        this.#element.scrollLeft = n * this.#element.offsetWidth;
     }
 }
