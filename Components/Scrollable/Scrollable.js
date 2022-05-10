@@ -37,6 +37,9 @@ class Scrollable {
         });
 
         for (let i = 0; i < element.children.length; i++) {
+            if (i === 0) {
+                this.#index = 0;
+            }
             const item = element.children[i];
             io.observe(item);
             item.classList.add('ScrollableItem');

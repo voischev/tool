@@ -20,7 +20,7 @@ class Observable {
 
     set value(value) {
         this.#value = value;
-        this.#subscribers.forEach(callback => callback());
+        this.#subscribers.forEach(callback => callback(value));
     }
 
     subscribe(callback) {
