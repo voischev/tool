@@ -1,3 +1,6 @@
+/*
+curl https://raw.githubusercontent.com/voischev/tool/main/Components/Drawer/Drawer.js > Drawer.js
+*/
 class Drawer {
     #element = null;
     constructor() {

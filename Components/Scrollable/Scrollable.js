@@ -1,3 +1,6 @@
+/*
+curl https://raw.githubusercontent.com/voischev/tool/main/Components/Scrollable/Scrollable.js > Scrollable.js
+*/
 class Scrollable {
     #element = null;
     #style = null;
