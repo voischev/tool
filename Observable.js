@@ -27,8 +27,11 @@ class Observable {
         if (this.#subscribers.includes(callback) === false) {
             this.#subscribers.push(callback);
         }
-        return () => {
-            this.#subscribers = this.#subscribers.filter((subscriber) => subscriber !== callback);
+    }
+    unsubscribe(callback) {
+        const index = this.#subscribers.indexOf(callback);
+        if (index > -1) {
+            this.#subscribers = this.#subscribers.splice(index, 1);
         }
     }
 }
