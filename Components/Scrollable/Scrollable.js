@@ -5,7 +5,7 @@ class Scrollable {
     #element = null;
     #style = null;
     #index = null;
-    constructor(element) {
+    constructor(element, callback) {
         let style = document.getElementById('scrollable');
         if (style) {
             if (style.tagName.toLowerCase() !== 'style') {
@@ -30,6 +30,10 @@ class Scrollable {
                     return;
                 }
                 this.#index = Array.from(element.children).indexOf(entry.target);
+
+                if (typeof callback === 'function') {
+                    callback(entry.target, this.index, element);
+                }
             });
         }, {
             root: element,
