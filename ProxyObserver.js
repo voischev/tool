@@ -56,7 +56,9 @@ class ProxyObserver {
                     flag = true;
                     requestAnimationFrame(() => {
                         flag = false;
-                        this.#callback(this.takeRecords(), this);
+                        if (this.#queuedEntries.length) {
+                            this.#callback(this.takeRecords(), this);
+                        }
                     });
                 }
             }
