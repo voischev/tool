@@ -19,23 +19,34 @@ class Drawer {
         drawer.id = 'drawer';
         drawer.style.cssText = 'position:fixed;inset:100% 0px 0px;';
         document.body.appendChild(drawer);
-        drawer.onmousedown = function(event) {
+        drawer.onmousedown = function (event) {
             drawer.style.transition = '0s';
             const startOffetTop = drawer.offsetTop;
             const startY = event.clientY;
             let currentOffsetTop = drawer.offsetTop;
-            drawer.onmousemove = function(event) {
+            drawer.onmousemove = function (event) {
                 if (currentOffsetTop - startY + event.clientY > startOffetTop) {
-                    drawer.style.top = startOffetTop - startY + event.clientY + 'px';
+                    drawer.style.top =
+                        startOffetTop - startY + event.clientY + 'px';
                 }
                 currentOffsetTop = drawer.offsetTop;
-            }
-            drawer.onmouseup = function() {
+            };
+            drawer.onmouseup = function () {
                 drawer.style.transition = '0.2s';
-                drawer.style.top = (currentOffsetTop > startOffetTop + 20) ? '100%' : startOffetTop + 'px';
+                drawer.style.top =
+                    currentOffsetTop > startOffetTop + 20
+                        ? '100%'
+                        : startOffetTop + 'px';
                 drawer.onmousemove = null;
+            };
+        };
+
+        document.addEventListener('mousedown', (e) => {
+            if (e.target.closest('#drawer') === null) {
+                this.hide();
             }
-        }
+        });
+
         this.#element = drawer;
     }
 
@@ -50,5 +61,13 @@ class Drawer {
             this.#element.style.top = 100 + 'px';
         }, 0);
     }
+
+    hide() {
+        this.#element.style.transition = '0.2s';
+        setTimeout(() => {
+            this.#element.style.top = '100%';
+        }, 0);
+    }
 }
+
 
