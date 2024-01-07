@@ -32,7 +32,7 @@ class Scrollable {
                 this.#index = Array.from(element.children).indexOf(entry.target);
 
                 if (typeof callback === 'function') {
-                    callback(entry.target, this.index, element);
+                    callback(entry.target, this.#index, element);
                 }
             });
         }, {
